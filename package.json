@@ -1,0 +1,29 @@
+{
+  "name": "lofi-moodoku",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "start": "expo start -c",
+    "android": "expo run:android",
+    "check": "tsc --noEmit",
+    "test": "npm run test:rules && npm run test:audio",
+    "purity": "! grep -rlE \"from '(react|react-native|expo)\" src/game || (echo 'src/game must stay free of React/RN/Expo imports' && exit 1)",
+    "test:audio": "tsc src/audio/sounds.ts --outDir .probe-audio --module commonjs --target es2020 --skipLibCheck --esModuleInterop --moduleResolution node && node tools/audiotest/run.js",
+    "test:rules": "tsc -p tsconfig.game.json && node tools/verify.js"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.15",
+    "expo-audio": "~57.0.4",
+    "expo-dev-client": "~57.0.14",
+    "expo-status-bar": "~57.0.1",
+    "react": "19.2.3",
+    "react-native": "0.86.2",
+    "react-native-safe-area-context": "~5.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.0",
+    "typescript": "~5.9.2"
+  }
+}

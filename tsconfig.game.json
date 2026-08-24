@@ -1,0 +1,16 @@
+{
+  "//": "Compiles the rules alone so they run in Node. Separate from tsconfig.json because that pulls in React Native's types, which src/game must not depend on. types:[] makes that structural rather than a convention.",
+  "compilerOptions": {
+    "rootDir": "src/game",
+    "outDir": ".probe",
+    "module": "commonjs",
+    "target": "es2020",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "types": []
+  },
+  "include": ["src/game/**/*.ts"]
+}
